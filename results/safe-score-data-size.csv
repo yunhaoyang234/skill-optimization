@@ -1,0 +1,31 @@
+Training Sample Number,Safety Score,Category,Training Time (s)
+2,0.55,In-Context,0
+5,0.75,In-Context,0
+10,0.825,In-Context,0
+20,0.875,In-Context,0
+50,0.875,In-Context,0
+100,0.85,In-Context,0
+2,0.35,Ours,5.25
+5,0.575,Ours,14.12
+10,0.75,Ours,31.75
+20,0.875,Ours,65.92
+50,0.925,Ours,171.74
+100,0.925,Ours,326.81
+2,0.625,Ours + In-Context(2),6.17
+5,0.775,Ours + In-Context(2),16.33
+10,0.85,Ours + In-Context(2),38.31
+20,0.95,Ours + In-Context(2),72.69
+50,0.95,Ours + In-Context(2),182.21
+100,0.975,Ours + In-Context(2),351.92
+2,0.55,Ours + In-Context(5),8.67
+5,0.8,Ours + In-Context(5),22.73
+10,0.875,Ours + In-Context(5),51.86
+20,0.925,Ours + In-Context(5),95.69
+50,0.95,Ours + In-Context(5),225.51
+100,0.95,Ours + In-Context(5),423.14
+2,0.3,Fine-tuning (RLVF),10.73
+5,0.35,Fine-tuning (RLVF),35.64
+10,0.425,Fine-tuning (RLVF),83.92
+20,0.575,Fine-tuning (RLVF),156.51
+50,0.85,Fine-tuning (RLVF),389.62
+100,0.925,Fine-tuning (RLVF),807.16

@@ -1,0 +1,62 @@
+
+MODULE main
+VAR
+  Action : {Stop, Move_forward, Turn_left, Turn_right};
+  Pedestrian : boolean;
+  Opposite_Car : boolean;
+  Green_Left_Turn_Light : boolean;
+  Green_Traffic_Light : boolean;
+  Stop_Sign : boolean;
+  Car_From_Left : boolean;
+  Pedestrian_At_Right : boolean;
+  Car_From_Right : boolean;
+
+
+ASSIGN
+  init(Pedestrian) := FALSE;
+  next(Pedestrian) :=
+    case
+      TRUE: {TRUE, FALSE};
+    esac;
+
+  init(Opposite_Car) := FALSE;
+    next(Opposite_Car) :=
+      case
+        TRUE: {TRUE, FALSE};
+      esac;
+
+  init(Green_Left_Turn_Light) := FALSE;
+  next(Green_Left_Turn_Light) :=
+    case
+      TRUE : {TRUE, FALSE};
+    esac;
+
+  init(Green_Traffic_Light) := FALSE;
+  next(Green_Traffic_Light) :=
+    case
+      TRUE: {TRUE, FALSE};
+    esac;
+
+  init(Stop_Sign) := FALSE;
+  next(Stop_Sign) :=
+    case
+      TRUE: {TRUE, FALSE};
+    esac;
+
+  init(Car_From_Left) := FALSE;
+  next(Car_From_Left) :=
+    case
+      TRUE: {TRUE, FALSE};
+    esac;
+
+  init(Car_From_Right) := FALSE;
+  next(Car_From_Right) :=
+    case
+      TRUE: {TRUE, FALSE};
+    esac;
+
+  init(Pedestrian_At_Right) := FALSE;
+  next(Pedestrian_At_Right) :=
+    case
+      TRUE: {TRUE, FALSE};
+    esac;
