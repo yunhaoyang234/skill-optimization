@@ -1,25 +1,49 @@
 Training Sample Number,Safety Score,Category,Training Time (s)
 2,0.55,In-Context,0
 5,0.75,In-Context,0
-10,0.825,In-Context,0
-20,0.875,In-Context,0
-50,0.875,In-Context,0
-100,0.85,In-Context,0
-2,0.35,Prompt Opt (LAD-VF),5.25
-5,0.575,Prompt Opt (LAD-VF),14.12
-10,0.75,Prompt Opt (LAD-VF),31.75
-20,0.875,Prompt Opt (LAD-VF),65.92
-50,0.925,Prompt Opt (LAD-VF),171.74
-100,0.925,Prompt Opt (LAD-VF),326.81
+10,0.775,In-Context,0
+20,0.825,In-Context,0
+50,0.825,In-Context,0
+100,0.825,In-Context,0
+2,0.3,Prompt Opt (LAD-VF),5.25
+5,0.4,Prompt Opt (LAD-VF),14.12
+10,0.55,Prompt Opt (LAD-VF),31.75
+20,0.725,Prompt Opt (LAD-VF),65.92
+50,0.825,Prompt Opt (LAD-VF),171.74
+100,0.825,Prompt Opt (LAD-VF),326.81
 2,0.45,VASO (ours),7.02
-5,0.725,VASO (ours),17.64
-10,0.875,VASO (ours),38.28
-20,0.975,VASO (ours),55.15
-50,1.0,VASO (ours),87.21
-100,1.0,VASO (ours),122.89
+5,0.425,VASO (ours),17.64
+10,0.675,VASO (ours),38.28
+20,0.825,VASO (ours),55.15
+50,0.95,VASO (ours),87.21
+100,0.95,VASO (ours),122.89
 2,0.3,Fine-tuning (RLVF),10.73
 5,0.35,Fine-tuning (RLVF),35.64
 10,0.425,Fine-tuning (RLVF),83.92
 20,0.675,Fine-tuning (RLVF),156.51
 50,0.90,Fine-tuning (RLVF),389.62
 100,0.95,Fine-tuning (RLVF),807.16
+2,0.65,In-Context,0
+5,0.7,In-Context,0
+10,0.85,In-Context,0
+20,0.80,In-Context,0
+50,0.85,In-Context,0
+100,0.85,In-Context,0
+2,0.45,Prompt Opt (LAD-VF),5.25
+5,0.6,Prompt Opt (LAD-VF),14.12
+10,0.75,Prompt Opt (LAD-VF),31.75
+20,0.8,Prompt Opt (LAD-VF),65.92
+50,0.9,Prompt Opt (LAD-VF),171.74
+100,0.925,Prompt Opt (LAD-VF),326.81
+2,0.3,VASO (ours),7.02
+5,0.65,VASO (ours),17.64
+10,0.775,VASO (ours),38.28
+20,0.9,VASO (ours),55.15
+50,0.925,VASO (ours),87.21
+100,0.975,VASO (ours),122.89
+2,0.4,Fine-tuning (RLVF),10.73
+5,0.4,Fine-tuning (RLVF),35.64
+10,0.45,Fine-tuning (RLVF),83.92
+20,0.625,Fine-tuning (RLVF),156.51
+50,0.870,Fine-tuning (RLVF),389.62
+100,0.925,Fine-tuning (RLVF),807.16
