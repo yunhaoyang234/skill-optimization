@@ -1,31 +1,136 @@
+# Automated Skill Optimization via Formal Verification for Embodied Agents
 
-# LLM-Automatic Differentiation via Verification Feedback (LAD-VF)
+<p align="center">
+  <img src="examples/pipeline.png" width="90%">
+</p>
 
-This repository contains the code and experiments for our work on **LLM-Automatic Differentiation Enables Fine-Tuning-Free Robot Planning from Formal Methods Feedback** for safe and adaptive robot planning. We implement a fine-tuning–free framework that integrates **automatic prompt engineering** with **formal verification feedback** to improve safety-constrained robot planning.  
+<p align="center">
+  <em>Overview of the proposed skill optimization framework.</em>
+</p>
 
-![Teaser Figure](examples/teaser.png)
+---
 
 ## Overview
 
-Our method treats every textual input to an LLM application (prompts, instructions, few-shot examples) as trainable parameters within a differentiable pipeline. Verification outcomes (e.g., number of violated specifications) are converted into structured losses and propagated backward to refine prompts. This enables **safety compliance, interpretability, and scalability** without costly fine-tuning.
-Our approach combines:
-- **Verification feedback** to enforce compliance with task specifications and obtain compliance labels without human annotations.  
-- **Efficient prompt optimization** to steer pre-trained LLMs without parameter updates. 
+We propose a framework for **automatic skill discovery and optimization** with foundation models under formal verification. The framework represents skills using:
+
+- **Global Contracts:** safety specifications shared across all skills,
+- **Local Rules:** skill-specific behavioral constraints,
+- **Semantic Contracts:** text-based instructions used to guide foundation model planning.
+
+We build a closed-loop optimization pipeline where:
+
+1. Foundation models generate skills and plans,
+2. Formal verification checks correctness against temporal logic specifications,
+3. Verification feedback iteratively refines the semantic contract.
+
+The framework enables skill optimization **without gradient-based fine-tuning or manual labeling**, improving both planning reliability and specification compliance.
+
+---
 
 ## Repository Structure
 
-- **Main Pipeline**: [`adalflow_driving_prompt_opt.ipynb`](adalflow_driving_prompt_opt.ipynb)  
-  Implements the **LAD-VF pipeline**, where formal verification outcomes guide prompt optimization.  
-  - Generates NuSMV-based plans for autonomous driving tasks.  
-  - Applies model checking against temporal-logic safety specifications.  
-  - Uses verification results as supervision signals to refine prompts iteratively.  
+```text
+.
+├── VASO.ipynb
+├── direct-query-baseline.ipynb
+├── model-checking.py
+├── examples
+│   ├── pipeline.png
+│   ├── vaso.png
+│   ├── sample_model_simple.smv
+│   ├── sample_ltl_short.txt
+│   └── sample_plan.py
+```
 
-- **Baseline (TextGrad)**: [`textgrad_driving_prompt_opt.ipynb`](textgrad_driving_prompt_opt.ipynb)  
-  Implements the **TextGrad baseline** for comparison. TextGrad backpropagates textual gradients but struggles with sequential decision-making. 
+### Main Files
 
-- **Prompt+Spec**: [`manual_prompt.ipynb`](manual_prompt.ipynb)  
-  A simple prompting baseline where the natural language task description and a set of specifications are directly provided to the LLM.
+#### `VASO.ipynb`
 
-## Setup
+Main implementation of the verification-guided skill optimization pipeline.
 
-Please input your OpenAI API Key in [`common.py`](common.py)  
+Includes:
+
+- skill generation,
+- semantic contract refinement,
+- verification-guided optimization,
+- evaluation on generated plans.
+
+---
+
+#### `direct-query-baseline.ipynb`
+
+Baseline implementation using direct plan generation without skill optimization.
+
+Used for comparison against the VASO optimization framework.
+
+---
+
+#### `model-checking.py`
+
+Utility for formal verification using model checking.
+
+The script verifies generated plans against temporal logic specifications.
+
+---
+
+
+## Model Checking
+
+Run formal verification with:
+
+```bash
+python model-checking.py \
+    --model_path examples/sample_model_simple.smv \
+    --spec_path examples/sample_ltl_short.txt \
+    --code_path examples/sample_plan.py
+```
+
+### Arguments
+
+| Argument | Description |
+|---|---|
+| `--model_path` | NuSMV transition system model |
+| `--spec_path` | Temporal logic specification file |
+| `--code_path` | Generated executable plan |
+
+---
+
+## Example Pipeline
+
+<p align="center">
+  <img src="examples/vaso.png" width="90%">
+</p>
+
+<p align="center">
+  <em>Verification-guided skill optimization loop.</em>
+</p>
+
+---
+
+## Key Features
+
+- Automatic skill discovery with foundation models
+- Structured and verifiable skill representation
+- Verification-guided semantic contract refinement
+- Plan-level temporal logic verification
+- No gradient-based fine-tuning required
+- Improved compliance and convergence efficiency
+
+---
+
+## Citation
+
+```bibtex
+@article{vaso2026,
+  title={Automated Skill Optimization via Formal Verification for Embodied Agents},
+  author={Anonymous},
+  year={2026}
+}
+```
+
+---
+
+## License
+
+MIT License
