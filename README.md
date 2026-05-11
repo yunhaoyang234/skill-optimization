@@ -38,6 +38,9 @@ The framework enables skill optimization **without gradient-based fine-tuning or
 ├── examples
 │   ├── pipeline.png
 │   ├── vaso.png
+│   ├── jackal-skill-example.md
+│   ├── px4-skill-init-example.md
+│   ├── px4-skill-final-example.md
 │   ├── sample_model_simple.smv
 │   ├── sample_ltl_short.txt
 │   └── sample_plan.py
@@ -73,6 +76,18 @@ Utility for formal verification using model checking.
 The script verifies generated plans against temporal logic specifications.
 
 ---
+
+## Optimized Skill Examples
+
+The repository includes optimized skill examples for different robotic platforms:
+
+| File | Description |
+|---|---|
+| `examples/jackal-skill-example.md` | Optimized navigation skill for the ClearPath Jackal ground robot |
+| `examples/px4-skill-init-example.md` | Initial PX4 semantic skill contract before verification-guided refinement |
+| `examples/px4-skill-final-example.md` | Final verified PX4 skill contract satisfying temporal logic specifications |
+
+These examples illustrate the progressive refinement of PX4 semantic contracts through verification-guided optimization.
 
 
 ## Model Checking
