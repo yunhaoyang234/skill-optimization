@@ -1,0 +1,17 @@
+skill,category,metric,score
+drive,training,safety,1.0
+drive,testing,safety,1.0
+drive,training,completion,0.88
+drive,testing,completion,0.80
+find-object,training,safety,0.98
+find-object,testing,safety,0.92
+find-object,training,completion,0.82
+find-object,testing,completion,0.86
+bypass-object,training,safety,0.96
+bypass-object,testing,safety,0.92
+bypass-object,training,completion,0.90
+bypass-object,testing,completion,0.82
+fly-in-shape,training,safety,0.98
+fly-in-shape,testing,safety,1.0
+fly-in-shape,training,completion,0.96
+fly-in-shape,testing,completion,0.90
