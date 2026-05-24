@@ -89,7 +89,7 @@ NUM_WORKERS = 20
 
 os.environ["OPENAI_API_KEY"] = "PLEASE INPUT YOUR API KEY HERE"
 AD_MODEL_PATH = 'examples/sample_model.smv'
-AD_SPECS_PATH = 'examples/sample_ltl.txt'
+AD_SPECS_PATH = 'examples/sample_ltl_short.txt'
 
 with open(AD_SPECS_PATH, 'r', encoding='utf-8') as file:
         specs = file.read()
@@ -97,7 +97,51 @@ with open(AD_SPECS_PATH, 'r', encoding='utf-8') as file:
 BASELINE_PROMPT = "Complete the following NuSMV solving the driving task. Ensure the NuSMV model adheres to the correct syntax and logical specifications for the driving task."
 #BASELINE_PROMPT = "Complete the following NuSMV solving the driving task."
 EVAL_FN_DESCRIPTION = f"Ratio between fulfilled specifications and total specifications. Specifications, written in temporal logic:\n\n{specs}\n\nIf the evaluator cannot parse the answer, the score will be set to 0."
+
+MODEL_CHECK_MODEL_PATH = "examples/sample_model_simple.smv"
+MODEL_CHECK_SPEC_PATH = "examples/sample_ltl_short.txt"
+
+with open(MODEL_CHECK_SPEC_PATH, "r", encoding="utf-8") as file:
+    model_check_specs = file.read()
+
+MODEL_CHECK_EVAL_FN_DESCRIPTION = (
+    "Ratio between fulfilled specifications and total specifications after NuSMV model checking. "
+    "The generated Python plan is parsed into controller transitions and verified against:\n\n"
+    f"{model_check_specs}\n\n"
+    "If the plan cannot be parsed or verification fails to run, the score is 0."
+)
+
 ##### UTILS #####
+
+def _load_model_checking():
+    import importlib.util
+    from pathlib import Path
+
+    module_path = Path(__file__).resolve().parent / "model-checking.py"
+    spec = importlib.util.spec_from_file_location("model_checking", module_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def compute_model_check_score(pred, verbose=False):
+    model_checking = _load_model_checking()
+    return model_checking.compute_model_check_score(
+        pred,
+        model_path=MODEL_CHECK_MODEL_PATH,
+        spec_path=MODEL_CHECK_SPEC_PATH,
+        verbose=verbose,
+    )
+
+
+def evaluate_model_check(pred, verbose=False):
+    model_checking = _load_model_checking()
+    return model_checking.evaluate_model_check(
+        pred,
+        model_path=MODEL_CHECK_MODEL_PATH,
+        spec_path=MODEL_CHECK_SPEC_PATH,
+        verbose=verbose,
+    )
 
 def compute_spec_score(pred):
     """
